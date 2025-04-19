@@ -146,4 +146,7 @@ aws securityhub get-findings --region eu-north-1
   - Explanation:
     - This command retrieves security findings from Security Hub for all accounts, including Security1, aggregated in the Security Account.
 
+## why?
+-  Enable Service Access for Security Hub:  through this we r allowing Security Hub to see and collect security alerts from all the AWS accounts in your organization.
+-  Enable Service Access for Account Service: Through this we are allowing AWS to manage and control various services (like Security Hub) across all the accounts within your AWS Organization.
 
