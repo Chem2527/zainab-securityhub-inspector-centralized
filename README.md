@@ -54,6 +54,94 @@ aws organizations register-delegated-administrator --account-id <SECURITY_ACCOUN
   - Explanation:
     - Above command provides administrative permissions to the Security Account for managing Security Hub in your AWS Organization. The Security Account will now be able to manage and monitor security settings and findings for all other accounts in your organization, such as the Security1 Account.
 
-###
+### Step 4
+1. Enable Amazon Inspector Delegated Admin for Security Account
+   
+  - Enable the Security Account as the delegated administrator for Amazon Inspector:
+
+```bash
+aws inspector2 enable-delegated-admin-account --delegated-admin-account-id <SECURITY_ACCOUNT_ID of account named security>
+```
+  - Explanation:
+    - Through above command Amazon Inspector of  security account will  be able to perform vulnerability assessments for other aws accounts.
+
+### step 5
+1. Enable Service Access for Account Service
+  - To allow Security Account to manage and access resources in other accounts, run below command:
+
+```bash
+aws organizations enable-aws-service-access --service-principal account.amazonaws.com
+```
+  - Explanation:
+    - This allows services like AWS Organizations to manage and perform tasks related to your accounts
+
+### Step 6
+1. Switch to Security Account
+
+  - From CLI use access key and secret key of security account and login to security account.
+
+
+### Step 7
+1.  Enable Security Hub in the Security Account
+  - Enable Security Hub in the Security Account to aggregate security findings from the Security1 Account:
+
+```bash
+aws securityhub enable-security-hub --region eu-north-1
+```
+  - explanation:
+      - above command enables Security Hub in the Security Account to act as the central hub for managing security findings and configurations across the organization.
+   
+
+### step 8
+1. Enable Amazon Inspector in the Security Account
+  - Enable Amazon Inspector to monitor EC2, ECR, and Lambda resources:
+
+```bash
+aws inspector2 enable --resource-types EC2 ECR LAMBDA
+```
+Explanation:
+This enables Amazon Inspector in the Security Account for vulnerability scanning of EC2 instances, ECR repositories, and Lambda functions.
+
+### step 9
+1. Add Security1 Account to Security Hub
+  - Navigate to Security Hub Console in the **Security Account**:
+
+  - In the Security Account, go to the Security Hub Console.
+
+Add Security1 Account:
+
+  - Under Configuration, click on Add Accounts.
+
+  - Provide the Account ID of Security1 to invite it to Security Hub.
+
+
+### step 10
+1. Accept Security Hub Invitation in Security1 Account
+  - Switch to the Security1 Account and enable security hub manually through portal.
+
+  - In the Security Hub Console, accept the invitation to join Security Hub.
+
+  - After accepting the invitation, refresh, and the status should change to Active 1/1.
+
+
+### Step 11
+1. Enable Amazon Inspector in the Security1 Account
+  - Enable Amazon Inspector in Security1 Account for vulnerability assessments:
+
+```bash
+aws inspector2 enable --resource-types EC2 ECR LAMBDA
+```
+  - Explanation:
+    - This command enables Amazon Inspector in the Security1 Account for vulnerability assessments on EC2 instances, ECR repositories, and Lambda functions.
+
+### step 12
+Verify Findings in Security Account
+  - In the Security Account, retrieve aggregated findings from Security Hub:
+
+```bash
+aws securityhub get-findings --region eu-north-1
+```
+  - Explanation:
+    - This command retrieves security findings from Security Hub for all accounts, including Security1, aggregated in the Security Account.
 
 
