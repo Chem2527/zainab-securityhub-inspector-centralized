@@ -1,4 +1,6 @@
 # Centralized Security Management Setup in AWS Using Security Hub & Inspector
+![centralized_security_management_in_aws_with_security_hub_ _inspector](https://github.com/user-attachments/assets/08e5a297-2746-4a0e-b6a5-c556303c216c)
+
 
 - Prerequisites
   - Root Account Access: Access to the root account for account creation and configuration.
