@@ -43,4 +43,17 @@ aws organizations enable-aws-service-access --service-principal securityhub.amaz
 
     - Where to run the command: Run this from the Root Account
 
+### Step 3
+1. Register Security Account as a Delegated Administrator for Security Hub
+
+  - Run the following command to register your Security Account as a delegated administrator for Security Hub:
+
+```bash
+aws organizations register-delegated-administrator --account-id <SECURITY_ACCOUNT_ID of account named security > --service-principal securityhub.amazonaws.com
+```
+  - Explanation:
+    - Above command provides administrative permissions to the Security Account for managing Security Hub in your AWS Organization. The Security Account will now be able to manage and monitor security settings and findings for all other accounts in your organization, such as the Security1 Account.
+
+###
+
 
