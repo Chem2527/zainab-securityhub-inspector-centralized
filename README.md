@@ -11,21 +11,22 @@
 
 ## Step-by-Step Process
 
-  - 1. Sign in to the Root Account
+1. Sign in to the Root Account
   - Log in to the AWS Management Console using your Root Account credentials.
 
-  - 2. Create the Security Account
+2. Create the Security Account
   - Navigate to AWS Organizations:
 
   - Go to the AWS Organizations service in the AWS Management Console.
 
 
 
-  - Account Name: Name this account something like Security (this will be used for centralized security management).
+  - Account Name: Name this account something like **Security** (this will be used for centralized security management).
 
   - Email Address: Provide the email address.
 
   - AWS will automatically create an IAM role named OrganizationAccountAccessRole for this account, allowing it to interact with AWS Organizations.
-  - 3. Create the Demo Account (Security1):
+
+3. Create the Demo Account (Security1):
 
   - Similarly, create another account for Security1, which will be the demo account for security management.
