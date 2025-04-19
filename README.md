@@ -10,11 +10,11 @@
 
 
 ## Step-by-Step Process
-
+### Step 1
 1. Sign in to the Root Account
   - Log in to the AWS Management Console using your Root Account credentials.
 
-2. Create the Security Account
+2. Create the Demo Account (security)
   - Navigate to AWS Organizations:
 
   - Go to the AWS Organizations service in the AWS Management Console.
@@ -29,4 +29,18 @@
 
 3. Create the Demo Account (Security1):
 
-  - Similarly, create another account for Security1, which will be the demo account for security management.
+  - Similarly, create another account for **Security1**, which will be the demo account for security management.
+
+### Step 2
+1. Enable Service Access for Security Hub
+Now, from your Root Account  enable service access for Security Hub across your AWS Organization:
+
+```bash
+aws organizations enable-aws-service-access --service-principal securityhub.amazonaws.com
+```
+  - Explanation:
+    - The above command enables the service access for Security Hub across your entire AWS Organization. This ensures that Security Hub can manage and monitor security configurations for all accounts within the organization, including the Security Account and Security1 Account.
+
+    - Where to run the command: Run this from the Root Account
+
+
